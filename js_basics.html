@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript基础知识练习</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .exercise {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .result {
+            background-color: #e8f4f8;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript基础知识练习</h1>
+        
+        <!-- 变量定义 -->
+        <div class="exercise">
+            <h2>1. 变量定义</h2>
+            <p>使用 var、let、const 定义变量</p>
+            <button onclick="testVariables()">运行测试</button>
+            <div class="result" id="varResult"></div>
+        </div>
+        
+        <!-- 变量类型 -->
+        <div class="exercise">
+            <h2>2. 变量类型</h2>
+            <p>测试不同的数据类型</p>
+            <button onclick="testTypes()">运行测试</button>
+            <div class="result" id="typeResult"></div>
+        </div>
+        
+        <!-- 表达式 -->
+        <div class="exercise">
+            <h2>3. 表达式</h2>
+            <p>测试各种表达式</p>
+            <button onclick="testExpressions()">运行测试</button>
+            <div class="result" id="exprResult"></div>
+        </div>
+        
+        <!-- 流程控制 -->
+        <div class="exercise">
+            <h2>4. 流程控制</h2>
+            <p>测试 if-else、switch、循环</p>
+            <button onclick="testControlFlow()">运行测试</button>
+            <div class="result" id="flowResult"></div>
+        </div>
+        
+        <!-- 函数 -->
+        <div class="exercise">
+            <h2>5. 函数</h2>
+            <p>测试函数定义和调用</p>
+            <button onclick="testFunctions()">运行测试</button>
+            <div class="result" id="funcResult"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 1. 变量定义
+        function testVariables() {
+            var varVariable = "这是var变量";
+            let letVariable = "这是let变量";
+            const constVariable = "这是const变量";
+            
+            let result = "变量定义测试：<br>";
+            result += `var变量: ${varVariable}<br>`;
+            result += `let变量: ${letVariable}<br>`;
+            result += `const变量: ${constVariable}<br>`;
+            
+            // 测试var的作用域
+            if (true) {
+                var varScope = "var作用域测试";
+                let letScope = "let作用域测试";
+                result += `if块内var: ${varScope}<br>`;
+                result += `if块内let: ${letScope}<br>`;
+            }
+            
+            result += `if块外var: ${varScope}<br>`;
+            // letScope 在if块外不可访问
+            
+            document.getElementById('varResult').innerHTML = result;
+        }
+        
+        // 2. 变量类型
+        function testTypes() {
+            let num = 42;
+            let str = "Hello";
+            let bool = true;
+            let arr = [1, 2, 3];
+            let obj = { name: "JavaScript", version: "ES6" };
+            let func = function() { return "函数" };
+            let undef = undefined;
+            let nul = null;
+            
+            let result = "变量类型测试：<br>";
+            result += `数字: ${num} (类型: ${typeof num})<br>`;
+            result += `字符串: ${str} (类型: ${typeof str})<br>`;
+            result += `布尔值: ${bool} (类型: ${typeof bool})<br>`;
+            result += `数组: ${arr} (类型: ${typeof arr})<br>`;
+            result += `对象: ${JSON.stringify(obj)} (类型: ${typeof obj})<br>`;
+            result += `函数: ${func} (类型: ${typeof func})<br>`;
+            result += `undefined: ${undef} (类型: ${typeof undef})<br>`;
+            result += `null: ${nul} (类型: ${typeof nul})<br>`;
+            
+            document.getElementById('typeResult').innerHTML = result;
+        }
+        
+        // 3. 表达式
+        function testExpressions() {
+            let a = 10;
+            let b = 5;
+            
+            let result = "表达式测试：<br>";
+            result += `a + b = ${a + b}<br>`;
+            result += `a - b = ${a - b}<br>`;
+            result += `a * b = ${a * b}<br>`;
+            result += `a / b = ${a / b}<br>`;
+            result += `a % b = ${a % b}<br>`;
+            result += `a ** b = ${a ** b}<br>`;
+            result += `a++ = ${a++}<br>`;
+            result += `++a = ${++a}<br>`;
+            result += `a > b = ${a > b}<br>`;
+            result += `a === b = ${a === b}<br>`;
+            result += `!b = ${!b}<br>`;
+            result += `a && b = ${a && b}<br>`;
+            result += `a || b = ${a || b}<br>`;
+            
+            document.getElementById('exprResult').innerHTML = result;
+        }
+        
+        // 4. 流程控制
+        function testControlFlow() {
+            let result = "流程控制测试：<br>";
+            
+            // if-else
+            let age = 18;
+            if (age >= 18) {
+                result += "if-else: 成年人<br>";
+            } else {
+                result += "if-else: 未成年人<br>";
+            }
+            
+            // switch
+            let day = 3;
+            let dayName;
+            switch(day) {
+                case 1:
+                    dayName = "星期一";
+                    break;
+                case 2:
+                    dayName = "星期二";
+                    break;
+                case 3:
+                    dayName = "星期三";
+                    break;
+                default:
+                    dayName = "其他";
+            }
+            result += `switch: ${dayName}<br>`;
+            
+            // for循环
+            result += "for循环: ";
+            for (let i = 1; i <= 5; i++) {
+                result += i + " ";
+            }
+            result += "<br>";
+            
+            // while循环
+            result += "while循环: ";
+            let j = 1;
+            while (j <= 3) {
+                result += j + " ";
+                j++;
+            }
+            result += "<br>";
+            
+            // forEach
+            let fruits = ["苹果", "香蕉", "橙子"];
+            result += "forEach: ";
+            fruits.forEach(fruit => {
+                result += fruit + " ";
+            });
+            result += "<br>";
+            
+            document.getElementById('flowResult').innerHTML = result;
+        }
+        
+        // 5. 函数
+        function testFunctions() {
+            // 函数声明
+            function add(a, b) {
+                return a + b;
+            }
+            
+            // 函数表达式
+            const subtract = function(a, b) {
+                return a - b;
+            };
+            
+            // 箭头函数
+            const multiply = (a, b) => a * b;
+            
+            // 带默认参数的函数
+            function greet(name = "朋友") {
+                return `你好，${name}！`;
+            }
+            
+            // 函数调用
+            let result = "函数测试：<br>";
+            result += `add(5, 3) = ${add(5, 3)}<br>`;
+            result += `subtract(10, 4) = ${subtract(10, 4)}<br>`;
+            result += `multiply(6, 2) = ${multiply(6, 2)}<br>`;
+            result += `greet() = ${greet()}<br>`;
+            result += `greet("JavaScript") = ${greet("JavaScript")}<br>`;
+            
+            // 闭包
+            function createCounter() {
+                let count = 0;
+                return function() {
+                    return ++count;
+                };
+            }
+            const counter = createCounter();
+            result += `闭包计数器: ${counter()}, ${counter()}, ${counter()}<br>`;
+            
+            document.getElementById('funcResult').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
