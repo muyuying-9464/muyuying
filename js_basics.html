@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript鍩虹鐭ヨ瘑缁冧範</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .exercise {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .result {
+            background-color: #e8f4f8;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript鍩虹鐭ヨ瘑缁冧範</h1>
+        
+        <!-- 鍙橀噺瀹氫箟 -->
+        <div class="exercise">
+            <h2>1. 鍙橀噺瀹氫箟</h2>
+            <p>浣跨敤 var銆乴et銆乧onst 瀹氫箟鍙橀噺</p>
+            <button onclick="testVariables()">杩愯娴嬭瘯</button>
+            <div class="result" id="varResult"></div>
+        </div>
+        
+        <!-- 鍙橀噺绫诲瀷 -->
+        <div class="exercise">
+            <h2>2. 鍙橀噺绫诲瀷</h2>
+            <p>娴嬭瘯涓嶅悓鐨勬暟鎹被鍨?/p>
+            <button onclick="testTypes()">杩愯娴嬭瘯</button>
+            <div class="result" id="typeResult"></div>
+        </div>
+        
+        <!-- 琛ㄨ揪寮?-->
+        <div class="exercise">
+            <h2>3. 琛ㄨ揪寮?/h2>
+            <p>娴嬭瘯鍚勭琛ㄨ揪寮?/p>
+            <button onclick="testExpressions()">杩愯娴嬭瘯</button>
+            <div class="result" id="exprResult"></div>
+        </div>
+        
+        <!-- 娴佺▼鎺у埗 -->
+        <div class="exercise">
+            <h2>4. 娴佺▼鎺у埗</h2>
+            <p>娴嬭瘯 if-else銆乻witch銆佸惊鐜?/p>
+            <button onclick="testControlFlow()">杩愯娴嬭瘯</button>
+            <div class="result" id="flowResult"></div>
+        </div>
+        
+        <!-- 鍑芥暟 -->
+        <div class="exercise">
+            <h2>5. 鍑芥暟</h2>
+            <p>娴嬭瘯鍑芥暟瀹氫箟鍜岃皟鐢?/p>
+            <button onclick="testFunctions()">杩愯娴嬭瘯</button>
+            <div class="result" id="funcResult"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 1. 鍙橀噺瀹氫箟
+        function testVariables() {
+            var varVariable = "杩欐槸var鍙橀噺";
+            let letVariable = "杩欐槸let鍙橀噺";
+            const constVariable = "杩欐槸const鍙橀噺";
+            
+            let result = "鍙橀噺瀹氫箟娴嬭瘯锛?br>";
+            result += `var鍙橀噺: ${varVariable}<br>`;
+            result += `let鍙橀噺: ${letVariable}<br>`;
+            result += `const鍙橀噺: ${constVariable}<br>`;
+            
+            // 娴嬭瘯var鐨勪綔鐢ㄥ煙
+            if (true) {
+                var varScope = "var浣滅敤鍩熸祴璇?;
+                let letScope = "let浣滅敤鍩熸祴璇?;
+                result += `if鍧楀唴var: ${varScope}<br>`;
+                result += `if鍧楀唴let: ${letScope}<br>`;
+            }
+            
+            result += `if鍧楀var: ${varScope}<br>`;
+            // letScope 鍦╥f鍧楀涓嶅彲璁块棶
+            
+            document.getElementById('varResult').innerHTML = result;
+        }
+        
+        // 2. 鍙橀噺绫诲瀷
+        function testTypes() {
+            let num = 42;
+            let str = "Hello";
+            let bool = true;
+            let arr = [1, 2, 3];
+            let obj = { name: "JavaScript", version: "ES6" };
+            let func = function() { return "鍑芥暟" };
+            let undef = undefined;
+            let nul = null;
+            
+            let result = "鍙橀噺绫诲瀷娴嬭瘯锛?br>";
+            result += `鏁板瓧: ${num} (绫诲瀷: ${typeof num})<br>`;
+            result += `瀛楃涓? ${str} (绫诲瀷: ${typeof str})<br>`;
+            result += `甯冨皵鍊? ${bool} (绫诲瀷: ${typeof bool})<br>`;
+            result += `鏁扮粍: ${arr} (绫诲瀷: ${typeof arr})<br>`;
+            result += `瀵硅薄: ${JSON.stringify(obj)} (绫诲瀷: ${typeof obj})<br>`;
+            result += `鍑芥暟: ${func} (绫诲瀷: ${typeof func})<br>`;
+            result += `undefined: ${undef} (绫诲瀷: ${typeof undef})<br>`;
+            result += `null: ${nul} (绫诲瀷: ${typeof nul})<br>`;
+            
+            document.getElementById('typeResult').innerHTML = result;
+        }
+        
+        // 3. 琛ㄨ揪寮?        function testExpressions() {
+            let a = 10;
+            let b = 5;
+            
+            let result = "琛ㄨ揪寮忔祴璇曪細<br>";
+            result += `a + b = ${a + b}<br>`;
+            result += `a - b = ${a - b}<br>`;
+            result += `a * b = ${a * b}<br>`;
+            result += `a / b = ${a / b}<br>`;
+            result += `a % b = ${a % b}<br>`;
+            result += `a ** b = ${a ** b}<br>`;
+            result += `a++ = ${a++}<br>`;
+            result += `++a = ${++a}<br>`;
+            result += `a > b = ${a > b}<br>`;
+            result += `a === b = ${a === b}<br>`;
+            result += `!b = ${!b}<br>`;
+            result += `a && b = ${a && b}<br>`;
+            result += `a || b = ${a || b}<br>`;
+            
+            document.getElementById('exprResult').innerHTML = result;
+        }
+        
+        // 4. 娴佺▼鎺у埗
+        function testControlFlow() {
+            let result = "娴佺▼鎺у埗娴嬭瘯锛?br>";
+            
+            // if-else
+            let age = 18;
+            if (age >= 18) {
+                result += "if-else: 鎴愬勾浜?br>";
+            } else {
+                result += "if-else: 鏈垚骞翠汉<br>";
+            }
+            
+            // switch
+            let day = 3;
+            let dayName;
+            switch(day) {
+                case 1:
+                    dayName = "鏄熸湡涓€";
+                    break;
+                case 2:
+                    dayName = "鏄熸湡浜?;
+                    break;
+                case 3:
+                    dayName = "鏄熸湡涓?;
+                    break;
+                default:
+                    dayName = "鍏朵粬";
+            }
+            result += `switch: ${dayName}<br>`;
+            
+            // for寰幆
+            result += "for寰幆: ";
+            for (let i = 1; i <= 5; i++) {
+                result += i + " ";
+            }
+            result += "<br>";
+            
+            // while寰幆
+            result += "while寰幆: ";
+            let j = 1;
+            while (j <= 3) {
+                result += j + " ";
+                j++;
+            }
+            result += "<br>";
+            
+            // forEach
+            let fruits = ["鑻规灉", "棣欒晧", "姗欏瓙"];
+            result += "forEach: ";
+            fruits.forEach(fruit => {
+                result += fruit + " ";
+            });
+            result += "<br>";
+            
+            document.getElementById('flowResult').innerHTML = result;
+        }
+        
+        // 5. 鍑芥暟
+        function testFunctions() {
+            // 鍑芥暟澹版槑
+            function add(a, b) {
+                return a + b;
+            }
+            
+            // 鍑芥暟琛ㄨ揪寮?            const subtract = function(a, b) {
+                return a - b;
+            };
+            
+            // 绠ご鍑芥暟
+            const multiply = (a, b) => a * b;
+            
+            // 甯﹂粯璁ゅ弬鏁扮殑鍑芥暟
+            function greet(name = "鏈嬪弸") {
+                return `浣犲ソ锛?{name}锛乣;
+            }
+            
+            // 鍑芥暟璋冪敤
+            let result = "鍑芥暟娴嬭瘯锛?br>";
+            result += `add(5, 3) = ${add(5, 3)}<br>`;
+            result += `subtract(10, 4) = ${subtract(10, 4)}<br>`;
+            result += `multiply(6, 2) = ${multiply(6, 2)}<br>`;
+            result += `greet() = ${greet()}<br>`;
+            result += `greet("JavaScript") = ${greet("JavaScript")}<br>`;
+            
+            // 闂寘
+            function createCounter() {
+                let count = 0;
+                return function() {
+                    return ++count;
+                };
+            }
+            const counter = createCounter();
+            result += `闂寘璁℃暟鍣? ${counter()}, ${counter()}, ${counter()}<br>`;
+            
+            document.getElementById('funcResult').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
